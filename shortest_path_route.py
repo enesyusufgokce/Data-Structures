@@ -15,7 +15,10 @@ def shortest_path(route):
     path_final = []
     for i in range(len(route)-1):
         path = nx.dijkstra_path(G, route[i], route[i + 1])
-        path_final = path_final + path
+        if i == 0:
+            path_final = path_final + path
+        else:
+            path_final = path_final + path[1:]
     return path_final
 
 route = ["A", "market", "bakery", "A"]
